@@ -3,6 +3,7 @@ require "csv"
  require 'bloc_record/base'
 
  class AddressBook < BlocRecord::Base
+   has_many :entries  
 
   #  def initialize(options={})
   #   super
@@ -20,10 +21,6 @@ require "csv"
     # end
     # entries.insert(index, Entry.new(name, phone_number, email))
   end
-
-   def entries
-     Entry.where(address_book_id: self.id)
-   end
 
    def find_entry(name)
      Entry.where(name: name, address_book_id: self.id).first
